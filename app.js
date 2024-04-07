@@ -170,11 +170,12 @@ function createInfoBar() {
   const infoBar = document.createElement("div"); // creating the element tag
   // styling the info bar
   infoBar.style.width = `${gridWidth}px`; //specifying the width
-  infoBar.style.height = `40px`; //specifying the width
-  infoBar.style.backgroundColor = "indigo"; //adding background color
+  infoBar.style.height = `66px`; //specifying the width
+  infoBar.style.backgroundColor = "#88001b"; //adding background color
   infoBar.style.color = "white"; //adding text color
   infoBar.style.fontSize = "16px"; //adding font size
-  infoBar.style.border = "2px solid indigo"; // adding the border style
+  infoBar.style.textAlign = "center"; // text align
+  infoBar.style.border = "2px solid #88001b"; // adding the border style
   infoBar.style.position = "relative"; // specifying position
   infoBar.classList.add("info-bar"); // adding class to the info bar
   // adding the info bar to the html document
@@ -183,14 +184,23 @@ function createInfoBar() {
 
 // function to create the info text
 function createInfoText() {
-  const infoText = document.createElement("p"); // creating the element tag
+  const infoText = document.createElement("div"); // creating the element tag
   infoText.classList.add("info-bar"); // adding class to the element
-  infoText.style.margin = "2px"; //adding margin around info text
-  infoText.textContent = `Double-click within canvas to turn on paint brush.\n
-     Single-click within canvas to turn off paint brush. \n
-     Click on buttons to select paint tools. \n 
-     A download button will appear after converting image.`; // adding the text for the info bar
+  infoText.style.backgroundColor = "indigo"; // text align
+  infoText.style.padding = "2px"; // text align
+  infoText.textContent = `Double-click or Single-click within canvas to turn \n
+  paint brush on/off respectively. Click on buttons to select paint tools. \n 
+  Also, a download appears after converting art into image for download.`;
+
+  const copyRight = document.createElement("div"); // creating the element tag
+  copyRight.classList.add("copyright-bar"); // adding class to the element
+  copyRight.style.textAlign = "center"; // text align
+  copyRight.style.backgroundColor = "#88001b"; // text align
+  copyRight.style.padding = "4px"; // text align
+  copyRight.textContent = `Copyright © 2024 Emmanuel Asare`; // adding the text for the info bar
+
   getInfoBar.appendChild(infoText); // appending the info text to the info bar
+  getInfoBar.appendChild(copyRight); // appending the copy right to the info bar
 }
 
 function convertPaintingToImage() {
