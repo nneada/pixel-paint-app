@@ -136,12 +136,12 @@ function createToolBarButtons() {
     // intantiate the common task outside the logical statements
     const createBtn = document.createElement("button"); // create the element tag
     createBtn.setAttribute("id", `${buttonName}`); // give an id to the button element
-    createBtn.style.width = "70px"; // specify the width of the button
     createBtn.style.height = "40px"; // specify the height of the button
     createBtn.style.margin = "1px"; // set margin around each tool button
 
     if (buttonName === "convertImage") {
-      createBtn.textContent = "Convert to image"; // specify a unique text for this button
+      createBtn.style.width = "120px"; // specify the width of this button
+      createBtn.textContent = "Download this art as an image"; // specify a unique text for this button
       createBtn.style.color = "#88001b"; // specify a unique font color for this button
     } else {
       // specify a unique background color for buttons here
@@ -150,6 +150,7 @@ function createToolBarButtons() {
       // add a class to the button element, here convertImage button is not a color
       // so it won't get a color class
       createBtn.classList.add("color");
+      createBtn.style.width = "70px"; // specify the width of these buttons
       if (buttonName === "white") {
         createBtn.textContent = `Eraser`; // specify a unique text for this button
         createBtn.style.color = "black"; // specify a unique font color for this button
@@ -189,8 +190,7 @@ function createInfoText() {
   infoText.style.backgroundColor = "indigo"; // text align
   infoText.style.padding = "2px"; // text align
   infoText.textContent = `Double-click or Single-click within canvas to turn \n
-  paint brush on/off respectively. Click on buttons to select paint tools. \n 
-  Also, a download appears after converting art into image for download.`;
+  paint brush on/off respectively. Click on buttons to select paint tools and download art.`;
 
   const copyRight = document.createElement("div"); // creating the element tag
   copyRight.classList.add("copyright-bar"); // adding class to the element
@@ -219,13 +219,8 @@ function convertPaintingToImage() {
 
     createDownloadLink(img); // create the download button
     const getDownloadLink = document.querySelector("#getImg"); // get download button
-    if (getDownloadLink) {
-      // if getDownloadBtn exists, listen for click event to download generated image
-      getDownloadLink.addEventListener("click", () => {
-        getDownloadLink.remove();
-        // removing the download button element as soon as download button is clicked
-      });
-    }
+    getDownloadLink.click(); // automatically click on the download link
+    getDownloadLink.remove(); // automatically remove the link
   });
 }
 
@@ -235,15 +230,10 @@ function createDownloadLink(img) {
   createDownloadLink.setAttribute("id", `getImg`); // add an id
   // add the image name and a download attribute
   createDownloadLink.setAttribute("download", `saved_image_.png`);
-  createDownloadLink.textContent = "Download image"; // specify the text for this download link
-  createDownloadLink.style.backgroundColor = "khaki"; // add background color
-  createDownloadLink.style.color = "#88001b"; // add text color
-  createDownloadLink.style.fontSize = "16px"; // add font size
-  createDownloadLink.style.fontWeight = "600"; // add font weight
-  createDownloadLink.style.width = "120px"; // specify link width
-  createDownloadLink.style.height = "32px"; // specify link height
-  createDownloadLink.style.marginLeft = "10px"; // left spacing
-  createDownloadLink.style.padding = "5px"; // give a spacing within the link element
+  createDownloadLink.style.backgroundColor = "#88001b"; // add background color
+  createDownloadLink.style.width = "10px"; // specify link width
+  createDownloadLink.style.height = "10px"; // specify link height
+  createDownloadLink.style.marginLeft = "80px"; // specify margin left
   createDownloadLink.href = img.src; // attach the converted image data to this link
   getToolBar.appendChild(createDownloadLink); // append this link to the tool bar
 }
